@@ -3,7 +3,7 @@ const typeDefs = `
     _id: ID
     username: String
     email: String
-    bookCount: string
+    bookCount: String
     savedBooks: [Book]
   }
   
@@ -11,9 +11,9 @@ const typeDefs = `
     bookId: ID
     authors: [String]
     description: String
-    title: title
-    image: image
-    link: link
+    title: String
+    image: String
+    link: String
   }
 
 
@@ -29,6 +29,10 @@ const typeDefs = `
     title: String
     image: String
     link: String
+  }
+
+  type Query {
+    me: User
   }
 
   type Mutation {
