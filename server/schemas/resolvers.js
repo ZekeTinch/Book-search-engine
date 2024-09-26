@@ -1,4 +1,4 @@
-const { Tech, Matchup } = require('../models');
+const { User, Book} = require('../models');
 
 const resolvers = {
   Query: {
@@ -30,7 +30,15 @@ const resolvers = {
       return { token, user };
     },
     saveBook: async (parent, {bookData}) => {
-      
+      const {updateBook} = await Book.find({update});
+
+      await Book.findOneAndUpdate(
+        {Book: bookData},
+        { $addToSet: {BookId: updateBook}}
+      );
+    },
+    removeBook: async (parent, {bookId}) => {
+      return Book.findOneAndDelete({_id: bookId})
     }
   },
 };
