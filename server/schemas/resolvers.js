@@ -2,8 +2,9 @@ const { User, Book} = require('../models');
 
 const resolvers = {
   Query: {
-    me: async () => {
-      return me.find({});
+    me: async (parent, args, context) => {
+      const data = await User.find({ _id: context.user._id });
+      return data;
     },
   },
   Mutation: {
