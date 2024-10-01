@@ -15,7 +15,8 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <SearchBooks />
-      }, {
+      },
+      {
         path: '/saved',
         element: <SavedBooks />
       }
