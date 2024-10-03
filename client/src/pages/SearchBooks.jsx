@@ -12,10 +12,17 @@ import Auth from '../utils/auth';
 import { searchGoogleBooks } from '../utils/API';
 import { saveBookIds, getSavedBookIds } from '../utils/localStorage';
 import { SAVE_BOOK } from '../utils/mutations';
+import {GET_ME} from '../utils/queries';
+
 
 const SearchBooks = () => {
 
-  const [saveBook, { loading }] = useMutation(SAVE_BOOK);
+  const [saveBook, { loading }] = useMutation(SAVE_BOOK,{
+    refetchQueries: [
+      GET_ME,
+      'me'
+    ]
+  });
 
   // create state for holding returned google api data
   const [searchedBooks, setSearchedBooks] = useState([]);

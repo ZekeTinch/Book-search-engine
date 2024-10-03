@@ -14,7 +14,12 @@ import { useQuery, useMutation } from '@apollo/client';
 
 const SavedBooks = () => {
   const { data } = useQuery(GET_ME);
-  const [removeBook] = useMutation(REMOVE_BOOK);
+  const [removeBook] = useMutation(REMOVE_BOOK, {
+    refetchQueries: [
+      GET_ME,
+      'me'
+    ]
+  });
 
   const userData = data?.me || {};
   console.log(userData)
